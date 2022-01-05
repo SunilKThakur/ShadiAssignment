@@ -5,4 +5,5 @@
     <string name="shadi_btn_decline">Decline</string>
     <string name="shadi_member_accepted">Member Accepted</string>
     <string name="shadi_member_declined">Member Declined</string>
+    <string name="please_ensure_network_connectivity">Please ensure network connectivity</string>
 </resources>

@@ -58,9 +58,15 @@ class ShadiViewModel @Inject constructor(
             }
             else
             {
-                _uiState.value = ShadiEvent.Success(
-                    shadiMatchDataBase.getShadiMatchDao().getShadiUsers()
-                )
+                if(shadiMatchDataBase.getShadiMatchDao().getShadiUsers().size>0) {
+                    _uiState.value = ShadiEvent.Success(
+                        shadiMatchDataBase.getShadiMatchDao().getShadiUsers()
+                    )
+                }
+                else
+                {
+                    _uiState.value=ShadiEvent.NoInternet
+                }
             }
         }
     }

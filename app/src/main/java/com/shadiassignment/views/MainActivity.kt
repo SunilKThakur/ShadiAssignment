@@ -1,9 +1,9 @@
 package com.shadiassignment.views
 
 import android.os.Bundle
-import com.shadiassignment.extensions.addFragment
 import com.shadiassignment.base.BaseActivity
 import com.shadiassignment.databinding.ActivityMainBinding
+import com.shadiassignment.extensions.addFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 

@@ -1,7 +1,6 @@
 package com.shadiassignment.views
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,7 +10,6 @@ import androidx.lifecycle.lifecycleScope
 import com.example.mymvvmdemo.room.ShadiMatchDatabase
 import com.shadiassignment.R
 import com.shadiassignment.adapter.ShadiMatchAdapter
-//import com.shadiassignment.adapter.ShadiMatchAdapter
 import com.shadiassignment.base.BaseFragment
 import com.shadiassignment.databinding.FragmentShadiBinding
 import com.shadiassignment.extensions.isNetworkAvailable
@@ -58,16 +56,29 @@ class ShadiMatchFragment : BaseFragment() {
             viewModel.uiState.collect {
                 when (it) {
                     is ShadiEvent.Loading -> {
-                        fragmentShadiBinding?.progressBar?.visibility = View.VISIBLE
+                        fragmentShadiBinding?.apply {
+                            linearNoInternetLayout.visibility = View.GONE
+                            progressBar.visibility = View.VISIBLE
+                        }
                     }
                     is ShadiEvent.Failure -> {
-                        fragmentShadiBinding?.progressBar?.visibility = View.GONE
+                        fragmentShadiBinding?.apply {
+                            linearNoInternetLayout.visibility = View.GONE
+                            progressBar.visibility = View.GONE
+                        }
                         Toast.makeText(requireContext(), it.errorText, Toast.LENGTH_LONG).show()
                     }
                     is ShadiEvent.Success -> {
-                        fragmentShadiBinding?.progressBar?.visibility = View.GONE
+                        fragmentShadiBinding?.apply {
+                            linearNoInternetLayout.visibility = View.GONE
+                            progressBar.visibility = View.GONE
+                        }
+
                         usersList = it.usersList
                         initialization()
+                    }
+                    is ShadiEvent.NoInternet -> {
+                        fragmentShadiBinding?.linearNoInternetLayout?.visibility = View.VISIBLE
                     }
                 }
             }
@@ -94,7 +105,6 @@ class ShadiMatchFragment : BaseFragment() {
     }
 
     private fun initialization() {
-        Log.e("usersList", "${usersList.size}")
         shadiMatchAdapter = ShadiMatchAdapter(usersList, requireContext())
         shadiMatchAdapter?.acceptDeclineClickListener = acceptDeclineEvent
         fragmentShadiBinding?.shadiMatchRecycler?.adapter = shadiMatchAdapter

@@ -1,28 +1,24 @@
 package com.shadiassignment.adapter
 
 import android.content.Context
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.NonNull
-import androidx.recyclerview.widget.RecyclerView
-
-import com.shadiassignment.models.ShadiMatchDBModel
-import com.bumptech.glide.Glide
-import android.widget.ImageView
 import androidx.appcompat.widget.LinearLayoutCompat
 import androidx.core.content.ContextCompat
-
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.shadiassignment.R
 import com.shadiassignment.databinding.ItemShadiMatchBinding
+import com.shadiassignment.models.ShadiMatchDBModel
 
 
 class ShadiMatchAdapter() : RecyclerView.Adapter<ShadiMatchAdapter.ShadiMatchHolder>() {
-    // List to store all the contact details
     private var usersList: List<ShadiMatchDBModel>? = null
     private var mContext: Context? = null
     var acceptDeclineClickListener: ((ShadiMatchDBModel) -> Unit)? = null
@@ -84,10 +80,6 @@ class ShadiMatchAdapter() : RecyclerView.Adapter<ShadiMatchAdapter.ShadiMatchHol
                     acceptDeclineClickListener?.invoke(shadiMatchDBModel)
                 }
             }
-
-
-            // You can set click listners to indvidual items in the viewholder here
-            // make sure you pass down the listner or make the Data members of the viewHolder public
         }
 
     }
