@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">ShadiAssignment</string>
+    <string name="shadi_screen_title">Shadi User List</string>
+    <string name="shadi_btn_accept">Accept</string>
+    <string name="shadi_btn_decline">Decline</string>
+    <string name="shadi_member_accepted">Member Accepted</string>
+    <string name="shadi_member_declined">Member Declined</string>
+</resources>
